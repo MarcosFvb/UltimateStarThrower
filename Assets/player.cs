@@ -101,7 +101,7 @@ public class Player : MonoBehaviour
         Vector2 throwDirection = transform.right * (transform.localScale.x > 0 ? 1 : -1);
 
         // Offset the throw position to be in front of the ninja
-        throwPosition += throwDirection * 0.5f; // Adjust the offset distance as needed
+        throwPosition += throwDirection * 1f; // Adjust the offset distance as needed
 
         GameObject star = Instantiate(ninjaStarPrefab, throwPosition, Quaternion.identity);
         Rigidbody2D starRb = star.GetComponent<Rigidbody2D>();

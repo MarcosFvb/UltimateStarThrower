@@ -152,12 +152,12 @@ TextureImporter:
       name: wall_throwing_right_0
       rect:
         serializedVersion: 2
-        x: 8
-        y: 2
-        width: 35
-        height: 41
-      alignment: 9
-      pivot: {x: 0, y: 1}
+        x: 1
+        y: 1
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -173,12 +173,12 @@ TextureImporter:
       name: wall_throwing_right_1
       rect:
         serializedVersion: 2
-        x: 52
-        y: 2
-        width: 35
-        height: 41
-      alignment: 9
-      pivot: {x: 0, y: 1}
+        x: 45
+        y: 1
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -194,12 +194,12 @@ TextureImporter:
       name: wall_throwing_right_2
       rect:
         serializedVersion: 2
-        x: 96
-        y: 2
-        width: 35
-        height: 41
-      alignment: 9
-      pivot: {x: 0, y: 1}
+        x: 89
+        y: 1
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
