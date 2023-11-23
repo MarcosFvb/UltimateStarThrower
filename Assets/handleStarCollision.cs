@@ -26,6 +26,7 @@ public class handleCollision : MonoBehaviour
 
             // Teleport the ninja to the wall
             TeleportToWall(collisionPoint);
+            Destroy(gameObject);
         }
     }
 
