@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f33d5df6bcfb39647b5d9f7474ec8d71
+guid: 78176cd5902c25c4680548e1829130b2
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -119,7 +119,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: sprite_sheet_Frame_0
+  - name: ninja_sprite_sheet_Frame_0
     originalName: 
     pivot: {x: 0.62886596, y: 0}
     alignment: 9
@@ -130,7 +130,7 @@ ScriptedImporter:
       y: 4
       width: 194
       height: 87
-    spriteID: 949dc245de69ebd4da2497ef24a84652
+    spriteID: 00ce8777e196db843a1ca4d0467f35ff
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -139,7 +139,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-  - name: sprite_sheet_Frame_1
+  - name: ninja_sprite_sheet_Frame_1
     originalName: 
     pivot: {x: 0.62886596, y: 0}
     alignment: 9
@@ -150,7 +150,7 @@ ScriptedImporter:
       y: 99
       width: 194
       height: 87
-    spriteID: 8a8ea836a3ef87c4cb0a24090dafb62f
+    spriteID: c92c9339195fcf445a85d605a617a032
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -159,7 +159,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 99}
-  - name: sprite_sheet_Frame_2
+  - name: ninja_sprite_sheet_Frame_2
     originalName: 
     pivot: {x: 0.62886596, y: 0}
     alignment: 9
@@ -170,7 +170,7 @@ ScriptedImporter:
       y: 194
       width: 194
       height: 87
-    spriteID: d17f9fb8bab8be84fa93d6852d43907a
+    spriteID: 77262237444a9ad4f805beea50455304
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -182,36 +182,36 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -165622507
-    name: sprite_sheet
+    guid: 2136701166
+    name: ninja_sprite_sheet
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: sprite_sheet_Frame_0
+    - name: ninja_sprite_sheet_Frame_0
       frameIndex: 0
       cellRect:
         x: 0
         y: 0
         width: 194
         height: 87
-      spriteId: 949dc245de69ebd4da2497ef24a84652
-    - name: sprite_sheet_Frame_1
+      spriteId: 00ce8777e196db843a1ca4d0467f35ff
+    - name: ninja_sprite_sheet_Frame_1
       frameIndex: 1
       cellRect:
         x: 0
         y: 0
         width: 194
         height: 87
-      spriteId: 8a8ea836a3ef87c4cb0a24090dafb62f
-    - name: sprite_sheet_Frame_2
+      spriteId: c92c9339195fcf445a85d605a617a032
+    - name: ninja_sprite_sheet_Frame_2
       frameIndex: 2
       cellRect:
         x: 0
         y: 0
         width: 194
         height: 87
-      spriteId: d17f9fb8bab8be84fa93d6852d43907a
+      spriteId: 77262237444a9ad4f805beea50455304
     linkedCells: []
     parentIndex: -1
   platformSettings: []

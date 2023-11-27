@@ -19,6 +19,13 @@ public class Player : MonoBehaviour
     private bool isCharging = false;
     private float currentPower = 0f;
     private bool powerIncreasing = true;
+    public LineRenderer lineRenderer;
+    public int trajectoryResolution = 10;
+
+    void Start()
+    {
+        lineRenderer = GetComponent<LineRenderer>();
+    }
 
     void Update()
     {
@@ -34,7 +41,7 @@ public class Player : MonoBehaviour
         }
         animator.SetFloat("speed", movement.sqrMagnitude);
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             isCharging = true;
             animator.SetBool("isThrowing", true);
@@ -45,20 +52,21 @@ public class Player : MonoBehaviour
         if (isCharging)
         {
             HandlePowerMeter();
+            UpdateTrajectory();
         }
 
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (Input.GetKeyUp(KeyCode.Mouse0))
         {
             isCharging = false;
             powerIncreasing = true;
-            animator.SetBool("isThrowing", false);
             animator.speed = 1f;
 
             // Calculate the power based on the position of the power meter
-            currentPower = Mathf.Lerp(minPower, maxPower, currentPower);
+            //currentPower = Mathf.Lerp(minPower, maxPower, currentPower);
 
             // Throw the star with the calculated power
             ThrowStar(currentPower);
+            animator.SetBool("isThrowing", false);
             currentPower = 0f;
         }
     }
@@ -93,12 +101,36 @@ public class Player : MonoBehaviour
 
     }
 
-    void ThrowStar(float power)
+    private Vector2 GetMousePosition() {
+        return Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    }   
+
+    private void UpdateTrajectory() {
+        Vector2 mousePosition = GetMousePosition();
+        Vector2 direction = (mousePosition - (Vector2)transform.position).normalized;
+        float distance = Vector2.Distance(transform.position, mousePosition);
+
+        lineRenderer.positionCount = trajectoryResolution;
+        for (int i = 0; i < trajectoryResolution; i++) {
+            float simulationTime = i / (float)trajectoryResolution * distance;
+            Vector2 displacement = direction * simulationTime + Physics2D.gravity * simulationTime * simulationTime / 2f * Vector2.down;
+            Vector2 drawPoint = (Vector2)transform.position + displacement;
+            lineRenderer.SetPosition(i, drawPoint);
+        }
+    }
+
+    private void ThrowStar(float power)
     {
         Vector2 throwPosition = rb.transform.position; // Initial throw position (can be adjusted)
+        int localScale;
+        if(isClimbing) {
+            localScale = transform.localScale.x > 0 ? -1 : 1;
+        } else {
+            localScale = transform.localScale.x > 0 ? 1 : -1;
+        }
 
         // Calculate the direction to throw the star based on player's facing direction
-        Vector2 throwDirection = transform.right * (transform.localScale.x > 0 ? 1 : -1);
+        Vector2 throwDirection = (GetMousePosition() - (Vector2)transform.position).normalized;
 
         // Offset the throw position to be in front of the ninja
         throwPosition += throwDirection * 1f; // Adjust the offset distance as needed
@@ -110,7 +142,7 @@ public class Player : MonoBehaviour
         starRb.velocity = throwDirection * power;
     }
 
-    void handleFacing() {
+    private void handleFacing() {
         if(movement.x < 0 && isFacingRight) {
             flip();
             isFacingRight = false;
@@ -120,7 +152,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    void flip() {
+    public void flip() {
         transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
     }
 }
