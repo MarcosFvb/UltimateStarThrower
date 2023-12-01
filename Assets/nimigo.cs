@@ -1,42 +1,37 @@
 using UnityEngine;
 
-public class EnemyPatrol : MonoBehaviour
+public class InimigoEstatico : MonoBehaviour
 {
-    public Transform[] patrolPoints;
-    public float moveSpeed = 5f;
+    // Variáveis para controlar a vida do inimigo
+    public int vidaMaxima = 1;
+    private int vidaAtual;
 
-    private int currentPatrolIndex = 0;
-    private Rigidbody2D rb;
-
-    private void Start()
+    // Função de inicialização
+    void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        vidaAtual = vidaMaxima;
+    }
 
-        // Certifique-se de ter pelo menos dois pontos de patrulha
-        if (patrolPoints.Length < 2)
+    // Função para tratar o acerto no inimigo
+    public void SofrerDano(int quantidadeDano)
+    {
+        vidaAtual -= quantidadeDano;
+
+        // Verifica se a vida chegou a zero
+        if (vidaAtual <= 0)
         {
-            Debug.LogError("Adicione pelo menos dois pontos de patrulha.");
+            Morrer();
         }
     }
 
-    private void Update()
+    // Função chamada quando o inimigo morre
+    void Morrer()
     {
-        Patrol();
-    }
+        // Adicione aqui qualquer lógica que você deseja quando o inimigo morre
+        Debug.Log("Inimigo morreu!");
 
-    private void Patrol()
-    {
-        // Move em direção ao ponto de patrulha atual
-        Vector2 target = patrolPoints[currentPatrolIndex].position;
-        Vector2 currentPosition = transform.position;
-        Vector2 moveDirection = (target - currentPosition).normalized;
-        rb.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
-
-        // Verifica se o inimigo chegou ao ponto de patrulha atual
-        if (Vector2.Distance(currentPosition, target) < 0.1f)
-        {
-            // Muda para o próximo ponto de patrulha
-            currentPatrolIndex = (currentPatrolIndex + 1) % patrolPoints.Length;
-        }
+        // Pode destruir o objeto ou desativá-lo, dependendo da sua necessidade
+        // Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }
