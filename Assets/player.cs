@@ -19,13 +19,7 @@ public class Player : MonoBehaviour
     private bool isCharging = false;
     private float currentPower = 0f;
     private bool powerIncreasing = true;
-    public LineRenderer lineRenderer;
     public int trajectoryResolution = 10;
-
-    void Start()
-    {
-        lineRenderer = GetComponent<LineRenderer>();
-    }
 
     void Update()
     {
@@ -52,7 +46,6 @@ public class Player : MonoBehaviour
         if (isCharging)
         {
             HandlePowerMeter();
-            UpdateTrajectory();
         }
 
         if (Input.GetKeyUp(KeyCode.Mouse0))
@@ -77,7 +70,6 @@ public class Player : MonoBehaviour
     }
     void HandlePowerMeter()
     {
-        Debug.Log(currentPower);
         if (powerIncreasing)
         {
             currentPower += powerIncreaseSpeed * Time.deltaTime;
@@ -104,20 +96,6 @@ public class Player : MonoBehaviour
     private Vector2 GetMousePosition() {
         return Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }   
-
-    private void UpdateTrajectory() {
-        Vector2 mousePosition = GetMousePosition();
-        Vector2 direction = (mousePosition - (Vector2)transform.position).normalized;
-        float distance = Vector2.Distance(transform.position, mousePosition);
-
-        lineRenderer.positionCount = trajectoryResolution;
-        for (int i = 0; i < trajectoryResolution; i++) {
-            float simulationTime = i / (float)trajectoryResolution * distance;
-            Vector2 displacement = direction * simulationTime + Physics2D.gravity * simulationTime * simulationTime / 2f * Vector2.down;
-            Vector2 drawPoint = (Vector2)transform.position + displacement;
-            lineRenderer.SetPosition(i, drawPoint);
-        }
-    }
 
     private void ThrowStar(float power)
     {

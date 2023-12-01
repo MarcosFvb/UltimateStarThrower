@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "UltimateStarThrower.sln"
+    "dotnet.defaultSolution": "Ultimate Star Thrower.sln"
 }

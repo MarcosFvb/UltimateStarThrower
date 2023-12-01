@@ -1,19 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class handleCollision : MonoBehaviour
 {
     GameObject ninja;
+    bool gameOver;
 
     void Start()
     {
         ninja = GameObject.Find("ninja");
     }
-    
-    void Update()
-    {
-        
+
+    void Update() {
+        if (gameOver) {
+            if (Input.anyKeyDown) {
+                Application.Quit();
+            }
+        }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -23,23 +28,31 @@ public class handleCollision : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Wall"))
         {
-            Debug.Log("Colidiu com a parede");
-            // Get the collision point on the wall
             Vector2 collisionPoint = collision.contacts[0].point;
-
-            // Teleport the ninja to the wall
             TeleportToWall(collisionPoint);
         }
         if(collision.gameObject.CompareTag("Enemy")) {
             collision.gameObject.GetComponent<Animator>().SetBool("wasHit", true);
+            goToNextLevel();
         }
+    }
 
+    void goToNextLevel() {
+        if(SceneManager.GetActiveScene().name == "mapa1") {
+            SceneManager.LoadScene("mapa2");
+        } else if (SceneManager.GetActiveScene().name == "mapa2") {
+            SceneManager.LoadScene("mapa3");
+        } else {
+            GameObject winScreen = GameObject.Find("you_win_screen");
+            winScreen.GetComponent<SpriteRenderer>().enabled = true;
+            gameOver = true;
+            Time.timeScale = 0;
+        }
+        
     }
 
     void TeleportToWall(Vector2 wallCollisionPoint)
     {
-        // Set the ninja's position to the collision point on the wall
-        //GameObject ninja = GameObject.Find("Ninja");
         ninja.transform.position = wallCollisionPoint;
 
         bool isClimbing = ninja.GetComponent<Player>().isClimbing;
