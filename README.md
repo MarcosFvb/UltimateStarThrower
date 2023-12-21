@@ -40,7 +40,7 @@ Este projeto foi desenvolvido através da game engine Unity como parte de uma av
 
 ## Contribuições
 
-Contribuições são bem-vindas! Se você tem ideias para melhorar o UltimateStarThrower ou encontrou algum problema, sinta-se à vontade para abrir uma [issue](https://github.com/marcosfvb/UltimateStarThrower/issues) ou enviar um [pull request](https://github.com/seu-usuario/UltimateStarThrower/pulls).
+Contribuições são bem-vindas! Se você tem ideias para melhorar o UltimateStarThrower ou encontrou algum problema, sinta-se à vontade para abrir uma [issue](https://github.com/marcosfvb/UltimateStarThrower/issues) ou enviar um [pull request](https://github.com/marcosfvb/UltimateStarThrower/pulls).
 
 ## Licença
 
